@@ -5,10 +5,10 @@ dailyRNG = new Math.seedrandom(new Date().toDateString());
 memStringNode.textContent = '' + Math.floor(dailyRNG() * 10000);
 updateMemorizeString();
 
-async function submitAnswer() {
+function submitAnswer() {
     if (inputGuess.value === memStringNode.textContent) {
         inputGuess.value = ''
-        await updateMemorizeString();
+        updateMemorizeString();
     } else {
         document.getElementById("game_form").style.display = "none";
         memStringNode.style.display = "grid";

@@ -2,20 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <title>Memorize Website</title>
 </head>
 
 <body>
-    <div id="memorize_string" style="display: none"></div>
+<section class="section">
+    <section class="hero is-info">
+        <div class="hero-body">
+            <p class="title" id="memorize_string" style="display: none"></p>
 
-    <form method="dialog" id="game_form">
-        <input type="text" id="guess">
-        <button type="submit" onclick="submitAnswer()">Submit</button>
-    </form>
+            <form method="dialog" id="game_form">
+                <input class="input is-large" type="text" id="guess">
+                <button type="submit" onclick="submitAnswer()">Submit</button>
+            </form>
 
-    <div id="lose_screen" style="display: none">HIGH SCORE: </div>
+            <div id="lose_screen" style="display: none">HIGH SCORE: </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script> 
-    <script src="main.js"></script>
+        </div>
+    </section>
+</section>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script> 
+<script src="main.js"></script>
 </body>
-
 </html>
