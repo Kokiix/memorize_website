@@ -11,14 +11,14 @@
 <section class="section">
     <section class="hero is-info">
         <div class="hero-body">
-            <p class="title" id="memorize_string" style="display: none"></p>
+            <div class="container"><p class="title" id="memorize_string" style="display: none"></p></div>
 
             <form method="dialog" id="game_form">
                 <input class="input is-large" type="text" id="guess">
-                <button type="submit" onclick="submitAnswer()">Submit</button>
+                <button type="submit" onclick="submitAnswer()" hidden></button>
             </form>
 
-            <div id="lose_screen" style="display: none">HIGH SCORE: </div>
+            <div class="title" id="lose_screen" style="display: none">SCORE:</div>
 
         </div>
     </section>
