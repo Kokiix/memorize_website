@@ -10,17 +10,26 @@
 <body>
 <section class="section">
     <section class="hero is-info">
-        <div class="hero-body">
-            <div class="container"><p class="title" id="memorize_string" style="display: none"></p></div>
+        <div id="hero-body" class="hero-body level">
+            <!-- <div class="container"><p class="title" id="memorize_string" style="display: none"></p></div> -->
+            <div class="level-item"><p class="title" id="memorize_string" style="display: none"></p></div>
+            <!-- <p class="title level-item" id="memorize_string" style="display: none"></p> -->
 
             <form method="dialog" id="game_form">
                 <input class="input is-large" type="text" id="guess">
                 <button type="submit" onclick="submitAnswer()" hidden></button>
             </form>
 
-            <div class="title" id="lose_screen" style="display: none">SCORE:</div>
+            <div class="title level-item" id="lose_screen" style="display: none">SCORE:</div>
 
         </div>
+<!-- 
+                <div class="hero-body">
+                    <form method="dialog" id="game_form">
+                        <input class="input is-large" type="text" id="guess">
+                        <button type="submit" onclick="submitAnswer()" hidden></button>
+                    </form>
+                </div> -->
     </section>
 </section>
 
