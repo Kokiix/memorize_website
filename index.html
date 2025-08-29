@@ -7,11 +7,14 @@
 <body>
     <div id="memorize_string" style="display: none"></div>
 
-    <form method="dialog">
+    <form method="dialog" id="game_form">
         <input type="text" id="guess">
         <button type="submit" onclick="submitAnswer()">Submit</button>
     </form>
 
+    <div id="lose_screen" style="display: none">HIGH SCORE: </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script> 
     <script src="main.js"></script>
 </body>
 
