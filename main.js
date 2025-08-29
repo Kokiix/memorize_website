@@ -1,7 +1,8 @@
 memStringNode = document.getElementById("memorize_string")
 inputGuess = document.getElementById("guess")
 
-memStringNode.textContent = '' + Math.floor(Math.random() * (10000 - 1111) + 1111);
+dailyRNG = new Math.seedrandom(new Date().toDateString());
+memStringNode.textContent = '' + Math.floor(dailyRNG() * 10000);
 updateMemorizeString();
 
 async function submitAnswer() {
@@ -17,7 +18,7 @@ async function submitAnswer() {
 }
 
 async function updateMemorizeString() {
-    memStringNode.textContent += Math.floor(Math.random() * 10);
+    memStringNode.textContent += Math.floor(dailyRNG() * 10);
     memStringNode.style.display = "grid";
     document.getElementById("game_form").style.display = "none";
     await new Promise(r => setTimeout(r, 3000));
