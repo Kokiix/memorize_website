@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <script src="main.js"></script>
+    <meta charset="UTF-8" />
 </head>
 
 <body>
-    <div id="memorize_string"></div>
-  <input type="text">
+    <div id="memorize_string" style="display: none"></div>
+
+    <form method="dialog">
+        <input type="text" id="guess">
+        <button type="submit" onclick="submitAnswer()">Submit</button>
+    </form>
+
+    <script src="main.js"></script>
 </body>
 
 </html>
