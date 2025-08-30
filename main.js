@@ -11,10 +11,29 @@ mode = Mode.DAILY;
 
 selDaily();
 
+function study() {
+    if (!inSubmit) {
+        if (studyMore) {
+            for (x = 0; x < 3; x++) {
+                memStringNode.textContent += Math.abs(dailyRNG.int32());
+            }
+        } else {
+            studyMore = true;
+            dailyRNG = new Math.seedrandom(new Date().toDateString());
+            study();
+            memStringNode.style.display = "grid";
+            gameForm.style.display = "none";
+            document.getElementById("studyText").textContent = "Study More";
+        }
+    }
+
+}
+
 function selDaily() {
     mode = Mode.DAILY;
     document.getElementById("dailyButton").classList.add("is-primary");
     document.getElementById("randomButton").classList.remove("is-primary");
+    document.getElementById("studySection").style.display = "grid";
     inputGuess.setAttribute("placeholder", "Type the number (You can skip ahead if you know it)");
     resetGame();
 }
@@ -23,6 +42,7 @@ function selRandom() {
     mode = Mode.RANDOM;
     document.getElementById("dailyButton").classList.remove("is-primary");
     document.getElementById("randomButton").classList.add("is-primary");
+    document.getElementById("studySection").style.display = "none";
     inputGuess.setAttribute("placeholder", "Type the number");
     resetGame();
 }
@@ -38,11 +58,16 @@ function resetGame() {
     gameForm.reset();
     inputGuess.value = 'x'.repeat(4);
 
+    inSubmit = false;
+    studyMore = false;
+
     score = 5
     memString = '' + random();
     memStringNode.textContent = memString.slice(0, score);
     updateMemorizeString();
     gameForm.reset();
+
+    document.getElementById("studyText").textContent = "Study";
 }
 
 function submitAnswer() {
@@ -69,10 +94,14 @@ async function updateMemorizeString() {
     memStringNode.textContent = memString.slice(0, score);
     memStringNode.style.display = "grid";
     gameForm.style.display = "none";
+    inSubmit = true;
+    document.getElementById("studySection").setAttribute("disabled", "true");
 
     await new Promise(r => setTimeout(r, 3000));
     memStringNode.style.display = "none";
     document.getElementById("hero-body").classList.remove("level");
     gameForm.style.display = "grid";
     inputGuess.focus();
+    inSubmit = false;
+    document.getElementById("studySection").removeAttribute("disabled");
 }
