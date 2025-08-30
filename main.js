@@ -9,12 +9,13 @@ const Mode = {
 };
 mode = Mode.DAILY;
 
-resetGame();
+selDaily();
 
 function selDaily() {
     mode = Mode.DAILY;
     document.getElementById("dailyButton").classList.add("is-primary");
     document.getElementById("randomButton").classList.remove("is-primary");
+    inputGuess.setAttribute("placeholder", "Type the number (You can skip ahead if you know it)");
     resetGame();
 }
 
@@ -22,6 +23,7 @@ function selRandom() {
     mode = Mode.RANDOM;
     document.getElementById("dailyButton").classList.remove("is-primary");
     document.getElementById("randomButton").classList.add("is-primary");
+    inputGuess.setAttribute("placeholder", "Type the number");
     resetGame();
 }
 
