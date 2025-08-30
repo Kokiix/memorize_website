@@ -9,6 +9,11 @@
 
 <body>
 <section class="section">
+    <div class="level">
+        <button class="button level-item is-rounded is-primary" id="dailyButton" onclick="selDaily()"><p class="title">Daily</p></button>
+        <button class="button level-item is-rounded" id="randomButton" onclick="selRandom()"><p class="title">Random</p></button>
+    </div>
+
     <section class="hero is-info">
         <div id="hero-body" class="hero-body level">
             <div class="level-item"><p class="title" id="memorize_string" style="display: none"></p></div>
@@ -17,11 +22,14 @@
                 <button type="submit" onclick="submitAnswer()" hidden></button>
             </form>
 
-            <div class="title level-item" id="lose_screen" style="display: none">SCORE:</div>
+            <div class="title level-item" id="lose_screen" style="display: none"></div>
 
         </div>
     </section>
+
 </section>
+
+<!-- <section class="section"><button class="button level-item is-rounded is-fullwidth" onclick="resetGame()"><p class="title is-5">Reset</p></button></section> -->
 
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script> 

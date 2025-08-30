@@ -1,34 +1,63 @@
 memStringNode = document.getElementById("memorize_string")
 inputGuess = document.getElementById("guess")
 gameForm = document.getElementById("game_form");
-
-gameForm.reset();
-inputGuess.value = 'x'.repeat(4);
-
 dailyRNG = new Math.seedrandom(new Date().toDateString());
 
-score = 5
-memString = '' + Math.abs(dailyRNG.int32());
-memStringNode.textContent = memString.slice(0, score);
-updateMemorizeString();
-gameForm.reset();
+const Mode = {
+    DAILY: "daily",
+    RANDOM: "random"
+};
+mode = Mode.DAILY;
+
+resetGame();
+
+function selDaily() {
+    mode = Mode.DAILY;
+    document.getElementById("dailyButton").classList.add("is-primary");
+    document.getElementById("randomButton").classList.remove("is-primary");
+    resetGame();
+}
+
+function selRandom() {
+    mode = Mode.RANDOM;
+    document.getElementById("dailyButton").classList.remove("is-primary");
+    document.getElementById("randomButton").classList.add("is-primary");
+    resetGame();
+}
+
+function random() {
+    if (mode == Mode.DAILY) {return Math.abs(dailyRNG.int32());}
+    return Math.floor(Math.random() * 10000);
+}
+
+function resetGame() {
+    document.getElementById("lose_screen").style.display = "none";
+    dailyRNG = new Math.seedrandom(new Date().toDateString());
+    gameForm.reset();
+    inputGuess.value = 'x'.repeat(4);
+
+    score = 0
+    memString = '' + random();
+    memStringNode.textContent = memString.slice(0, score);
+    updateMemorizeString();
+    gameForm.reset();
+}
 
 function submitAnswer() {
-    if (inputGuess.value.length >= memStringNode.textContent.length) {
-        memString += Math.abs(dailyRNG.int32());
+    while (inputGuess.value.length >= memString.length) {
+        memString += random();
     }
 
     document.getElementById("hero-body").classList.add("level");
-    console.log("Internal string to memorize " + memString);
-    console.log("Input string " + inputGuess.value);
+    console.log(Math.max(inputGuess.value.length, score));
     
-    if (memString.startsWith(inputGuess.value)) {
+    if (memString.slice(0, Math.max(inputGuess.value.length, score - 1)) === inputGuess.value) {
         updateMemorizeString();
     } else {
         gameForm.style.display = "none";
         memStringNode.style.display = "grid";
         document.getElementById("lose_screen").style.display = "grid";
-        document.getElementById("lose_screen").textContent += " " + score;
+        document.getElementById("lose_screen").textContent = "SCORE: " + score;
     }
 
     inputGuess.value = ''
