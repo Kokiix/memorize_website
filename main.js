@@ -41,6 +41,7 @@ function resetGame() {
     memStringNode.textContent = memString.slice(0, score);
     updateMemorizeString();
     gameForm.reset();
+    score = 0
 }
 
 function submitAnswer() {
