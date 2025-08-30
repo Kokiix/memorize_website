@@ -27,7 +27,7 @@ function selRandom() {
 
 function random() {
     if (mode == Mode.DAILY) {return Math.abs(dailyRNG.int32());}
-    return Math.floor(Math.random() * 10000);
+    return Math.floor(Math.random() * 100000);
 }
 
 function resetGame() {
@@ -36,12 +36,11 @@ function resetGame() {
     gameForm.reset();
     inputGuess.value = 'x'.repeat(4);
 
-    score = 0
+    score = 5
     memString = '' + random();
     memStringNode.textContent = memString.slice(0, score);
     updateMemorizeString();
     gameForm.reset();
-    score = 0
 }
 
 function submitAnswer() {
@@ -50,9 +49,8 @@ function submitAnswer() {
     }
 
     document.getElementById("hero-body").classList.add("level");
-    console.log(Math.max(inputGuess.value.length, score));
     
-    if (memString.slice(0, Math.max(inputGuess.value.length, score - 1)) === inputGuess.value) {
+    if (memString.slice(0, Math.max(inputGuess.value.length, score)) === inputGuess.value) {
         updateMemorizeString();
     } else {
         gameForm.style.display = "none";
