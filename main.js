@@ -13,6 +13,7 @@ selDaily();
 
 function study() {
     if (!inSubmit) {
+        memStringNode.textContent = "";
         if (studyMore) {
             for (x = 0; x < 3; x++) {
                 memStringNode.textContent += Math.abs(dailyRNG.int32());
